@@ -76,12 +76,10 @@ response = client.responses.create(
     temperature=0.7
 )
 
-# Convert to Python object
 dataset_text = response.output_text
 try:
     dataset_text = response.output_text.strip()
 
-    # Remove code block markdown if present
     if dataset_text.startswith("```json"):
         dataset_text = dataset_text[len("```json"):]
 
@@ -90,15 +88,13 @@ try:
 
     dataset_text = dataset_text.strip()
 
-    # Now parse
     dataset = json.loads(dataset_text)
 except json.JSONDecodeError as e:
     print("Error parsing JSON:", e)
     print("Raw output:\n", dataset_text)
     exit()
 
-# Save to file
 with open(OUTPUT_FILE, "w") as f:
     json.dump(dataset, f, indent=2)
 
-print(f"✅ Dataset generated and saved to {OUTPUT_FILE}")
+print(f"Dataset generated and saved to {OUTPUT_FILE}")
