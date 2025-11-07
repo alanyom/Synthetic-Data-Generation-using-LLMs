@@ -24,6 +24,7 @@ The output file contains two top-level keys: nodes and edges.
 
 Example:
 
+```json
 {
   "nodes": [
     {"id": "P001", "type": "person", "name": "Jane Doe", "skills": ["Python", "SQL"]},
@@ -36,3 +37,4 @@ Example:
     {"source": "C001", "target": "J001", "relation": "posted_by"}
   ]
 }
+
